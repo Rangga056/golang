@@ -1,17 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
+
+var pl = fmt.Println
 
 func main() {
-	// Basic data types
-	var a bool = true    // boolean
-	var b int = 12       // interger
-	var c float32 = 3.14 // floating point number
-	var d string = "Hi"  //string
+	// int, float64, bool, string, rune
+	// Default type 0, 0.0, false, ""
 
-  // uint can only stores non negative numbers
-	var e uint = 123
-
-  fmt.Println(a, b, c, d, e)
-
+	pl(reflect.TypeOf(25))
+	pl(reflect.TypeOf(3.14))
+	pl(reflect.TypeOf(true))
+	pl(reflect.TypeOf("hello"))
+	pl(reflect.TypeOf("🙃"))
 }

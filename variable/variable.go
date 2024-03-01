@@ -1,38 +1,40 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"reflect"
+	"strconv"
+)
+
+var pl = fmt.Println
 
 func main() {
-	// var can be used inside or outside of a function
-	// variable declaration and value assigment can be done separeately
-	var student1 string = "Rangga"
-	var student2 = "Falah"
-	// var s string
-	// var i int
-	// var bo bool
+	// var name type
+	var vName string = "Rangga"
+	var v1, v2 = 1.2, 3.4
+	var v3 = "hello"
+	v4 := 2.4
 
-	// := can only be used inside of a function
-	// variable declaration and value assigment cannot be done separately
-	// x := 2
+	pl(vName, v1, v2, v3, v4)
 
-	// You can also declared multiple variables in the same line
-	// var a, b, c, d int = 1,2,3,4
+	cV1 := 1.5
+	cV2 := int(cV1)
+	cV3 := "50000000"
+	cV4, err := strconv.Atoi(cV3)
 
-	// You can also declared variable in block
-	// var (
-	//   z int
-	//   u int = 1
-	//   m string = "Miftahul"
-	// )
+	pl(cV4, err, reflect.TypeOf(cV4))
 
-	// Use const to declared a constant variable
-	// const name string = "Rangga"
-	// you can also group constant variables
-	// const (
-	// 	A int = 1
-	// 	B     = 3.14
-	// 	C     = "Hi"
-	// )
+	pl(cV2)
 
-	fmt.Println(student1, student2)
+	cV7 := "3.14"
+	if cV8, err := strconv.ParseFloat(cV7, 64); err == nil {
+		pl(cV8)
+	} else {
+		log.Fatal(err)
+	}
+
+	cV9 := fmt.Sprintf("%f", 3.14) // convert float to string
+	pl(cV9)
+
 }
