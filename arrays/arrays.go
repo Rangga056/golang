@@ -2,32 +2,55 @@ package main
 
 import "fmt"
 
-func main() {
-	//NOTE Arrays in go can either use var or :=
-	var array1 = [3]int{1, 2, 3} // [length]type[data values] length is defined
-	var cars = [3]string{"toyota", "nissan", "honda"}
-	array2 := [...]int{4, 5, 6, 7, 8} // [...]type[data values] length is inferred
+var pl = fmt.Println
 
-	fmt.Print(array1, "\n", array2, "\n", cars, "\n")
-	fmt.Println(cars[0]) // toyota
+func main() {
+	// var arr1 [5]int
+	// arr1[0] = 1
+	// arr2 := [5]int{1, 2, 3, 4, 5}
+	// pl("Index :", arr2[0])
+	// pl("Arr Length :", len(arr2))
+	// for i := 0; i < len(arr2); i++ {
+	// 	pl(arr2[i])
+	// }
+	// for i, v := range arr2 {
+	// 	fmt.Printf("%d : %d\n", i, v) // i : index, v : value
+	// }
+	// arr3 := [2][2]int{
+	// 	{1, 2},
+	// 	{3, 4},
+	// }// [0][1] 0 from top 1 from left so = 2
+	// for i := 0; i < 2; i++ {
+	// 	for j := 0; j < 2; j++ {
+	// 		pl(arr3[i][j])
+	// 	}
+	// }
+
+	//NOTE Arrays in go can either use var or :=
+	// var array1 = [3]int{1, 2, 3} // [length]type[data values] length is defined
+	// var cars = [3]string{"toyota", "nissan", "honda"}
+	// array2 := [...]int{4, 5, 6, 7, 8} // [...]type[data values] length is inferred
+
+	// fmt.Print(array1, "\n", array2, "\n", cars, "\n")
+	// fmt.Println(cars[0]) // toyota
 
 	//change the value in the array
-	cars[1] = "datsun"
-	fmt.Println(cars[1])
+	// cars[1] = "datsun"
+	// fmt.Println(cars[1])
 
 	//NOTE array initialization
 	// default value for int is 0
-	numbers1 := [5]int{}
-	numbers2 := [5]int{1, 2}
+	// numbers1 := [5]int{
+	// numbers2 := [5]int{1, 2}
 
-	fmt.Print(numbers1, "\n", numbers2, "\n")
+	// fmt.Print(numbers1, "\n", numbers2, "\n")
 
 	// you can also initializes specific elements in the array
-	numbers3 := [5]int{1: 10, 2: 29}
-	fmt.Print(numbers3, "\n") // [0, 10, 29, 0, 0]
+	// numbers3 := [5]int{1: 10, 2: 29}
+	// fmt.Print(numbers3, "\n") // [0, 10, 29, 0, 0]
 
 	//len() to check the length of an array
-	fmt.Println(len(numbers1))
+	// fmt.Println(len(numbers1))
 
 	//NOTE slices
 	// myslise = []datatype{}
@@ -66,40 +89,40 @@ func main() {
 	// fmt.Printf("capacity=%d\n", cap(myslice3))
 
 	//NOTE unlike array you can change the length of a slcie
-	arr1 := [6]int{9, 10, 11, 12, 13, 14} // An array
-	myslice1 := arr1[1:5]                 // Slice array
-	fmt.Printf("myslice1 = %v\n", myslice1)
-	fmt.Printf("length = %d\n", len(myslice1))
-	fmt.Printf("capacity = %d\n", cap(myslice1))
+	// arr1 := [6]int{9, 10, 11, 12, 13, 14} // An array
+	// myslice1 := arr1[1:5]                 // Slice array
+	// fmt.Printf("myslice1 = %v\n", myslice1)
+	// fmt.Printf("length = %d\n", len(myslice1))
+	// fmt.Printf("capacity = %d\n", cap(myslice1))
 
-	myslice1 = arr1[1:3] // Change length by re-slicing the array
-	fmt.Printf("myslice1 = %v\n", myslice1)
-	fmt.Printf("length = %d\n", len(myslice1))
-	fmt.Printf("capacity = %d\n", cap(myslice1))
+	// myslice1 = arr1[1:3] // Change length by re-slicing the array
+	// fmt.Printf("myslice1 = %v\n", myslice1)
+	// fmt.Printf("length = %d\n", len(myslice1))
+	// fmt.Printf("capacity = %d\n", cap(myslice1))
 
-	myslice1 = append(myslice1, 20, 21, 22, 23) // Change length by appending items
-	fmt.Printf("myslice1 = %v\n", myslice1)
-	fmt.Printf("length = %d\n", len(myslice1))
-	fmt.Printf("capacity = %d\n", cap(myslice1))
+	// myslice1 = append(myslice1, 20, 21, 22, 23) // Change length by appending items
+	// fmt.Printf("myslice1 = %v\n", myslice1)
+	// fmt.Printf("length = %d\n", len(myslice1))
+	// fmt.Printf("capacity = %d\n", cap(myslice1))
 
 	//NOTE when using slices go loads all the underlying array into the memmory
 	// is better to use copy() if the array is large it will reduce memory used
 	// copy(dest, src) copy the source to destination
 
-	numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
+	// numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
 	// Original slice
-  fmt.Print("\n")
-	fmt.Printf("numbers = %v\n", numbers)
-	fmt.Printf("length = %d\n", len(numbers))
-	fmt.Printf("capacity = %d\n", cap(numbers))
+	//  fmt.Print("\n")
+	// fmt.Printf("numbers = %v\n", numbers)
+	// fmt.Printf("length = %d\n", len(numbers))
+	// fmt.Printf("capacity = %d\n", cap(numbers))
 
 	// Create copy with only needed numbers
-	neededNumbers := numbers[:len(numbers)-10]
-	numbersCopy := make([]int, len(neededNumbers))
-	copy(numbersCopy, neededNumbers)
-
-	fmt.Printf("numbersCopy = %v\n", numbersCopy)
-	fmt.Printf("length = %d\n", len(numbersCopy))
-	fmt.Printf("capacity = %d\n", cap(numbersCopy))
+	// neededNumbers := numbers[:len(numbers)-10]
+	// numbersCopy := make([]int, len(neededNumbers))
+	// copy(numbersCopy, neededNumbers)
+	//
+	// fmt.Printf("numbersCopy = %v\n", numbersCopy)
+	// fmt.Printf("length = %d\n", len(numbersCopy))
+	// fmt.Printf("capacity = %d\n", cap(numbersCopy))
 
 }
